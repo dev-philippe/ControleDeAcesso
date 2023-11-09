@@ -1,14 +1,24 @@
 package com.controleDeAcesso.ControleDeAcesso.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table( name = "tab_user")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id_user")
+    private Integer id;
+    @Column(length = 50, nullable = false)
     private String name;
-    private String username;
-    private String passaword;
+    @Column(length = 20, nullable = false)
 
+    private String username;
+    @Column(length = 100, nullable = false)
+    private String passaword;
+    @Transient
     private List<String> roles;
 
     public User(){
